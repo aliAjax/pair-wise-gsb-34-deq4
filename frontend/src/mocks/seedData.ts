@@ -134,9 +134,13 @@ export const mockData = {
       "severity": "severity 1",
       "owner_id": 1,
       "deadline": "deadline 1",
-      "rectify_status": "IN_PROGRESS",
+      "rectify_status": "OPEN",
       "rectify_note": "rectify note 1",
-      "closed_at": "2026-06-11T09:00:00Z"
+      "closed_at": "",
+      "device_id": 1,
+      "found_count": 2,
+      "merged_result_ids": [1],
+      "last_found_at": "2026-06-11T09:00:00Z"
     },
     {
       "id": 2,
@@ -144,9 +148,13 @@ export const mockData = {
       "severity": "severity 2",
       "owner_id": 2,
       "deadline": "deadline 2",
-      "rectify_status": "SUBMITTED",
+      "rectify_status": "OPEN",
       "rectify_note": "rectify note 2",
-      "closed_at": "2026-06-12T09:00:00Z"
+      "closed_at": "",
+      "device_id": 2,
+      "found_count": 1,
+      "merged_result_ids": [2],
+      "last_found_at": "2026-06-12T09:00:00Z"
     },
     {
       "id": 3,
@@ -154,9 +162,141 @@ export const mockData = {
       "severity": "severity 3",
       "owner_id": 3,
       "deadline": "deadline 3",
-      "rectify_status": "PLANNED",
+      "rectify_status": "CLOSED",
       "rectify_note": "rectify note 3",
-      "closed_at": "2026-06-13T09:00:00Z"
+      "closed_at": "2026-06-13T09:00:00Z",
+      "device_id": 3,
+      "found_count": 1,
+      "merged_result_ids": [3],
+      "last_found_at": "2026-06-13T09:00:00Z"
+    }
+  ],
+  "checklistVersion": [
+    {
+      "id": 1,
+      "task_type": "HYDRANT",
+      "scope_key": "DEFAULT",
+      "version": 1,
+      "status": "PUBLISHED",
+      "published_at": "2026-06-01T09:00:00Z",
+      "published_by": 1,
+      "created_at": "2026-06-01T09:00:00Z",
+      "created_by": 1,
+      "remark": "消火栓首版检查清单",
+      "items": [
+        {
+          "item_code": "H_PRESSURE",
+          "item_name": "管网压力(MPa)",
+          "rule_type": "NUMERIC",
+          "device_type": "HYDRANT",
+          "severity": "HIGH",
+          "min_value": 0.2,
+          "max_value": 0.8,
+          "critical_min": null,
+          "critical_max": 1.0,
+          "allowed_values": [],
+          "abnormal_value": null,
+          "required": true
+        },
+        {
+          "item_code": "H_BOX",
+          "item_name": "栓箱完好",
+          "rule_type": "CHOICE",
+          "device_type": "HYDRANT",
+          "severity": "MEDIUM",
+          "min_value": null,
+          "max_value": null,
+          "critical_min": null,
+          "critical_max": null,
+          "allowed_values": ["INTACT"],
+          "abnormal_value": null,
+          "required": true
+        },
+        {
+          "item_code": "H_WATER",
+          "item_name": "供水状态",
+          "rule_type": "TEXT",
+          "device_type": "HYDRANT",
+          "severity": "HIGH",
+          "min_value": null,
+          "max_value": null,
+          "critical_min": null,
+          "critical_max": null,
+          "allowed_values": [],
+          "abnormal_value": "NO_WATER",
+          "required": true
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "task_type": "SMOKE_DETECTOR",
+      "scope_key": "DEFAULT",
+      "version": 1,
+      "status": "PUBLISHED",
+      "published_at": "2026-06-01T09:00:00Z",
+      "published_by": 1,
+      "created_at": "2026-06-01T09:00:00Z",
+      "created_by": 1,
+      "remark": "烟感首版检查清单",
+      "items": [
+        {
+          "item_code": "SD_TEST",
+          "item_name": "联动测试",
+          "rule_type": "CHOICE",
+          "device_type": "SMOKE_DETECTOR",
+          "severity": "HIGH",
+          "min_value": null,
+          "max_value": null,
+          "critical_min": null,
+          "critical_max": null,
+          "allowed_values": ["PASS"],
+          "abnormal_value": null,
+          "required": true
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "task_type": "HYDRANT",
+      "scope_key": "DEFAULT",
+      "version": 2,
+      "status": "DRAFT",
+      "published_at": "",
+      "published_by": null,
+      "created_at": "2026-06-20T09:00:00Z",
+      "created_by": 1,
+      "remark": "消火栓清单改版（草稿）",
+      "items": [
+        {
+          "item_code": "H_PRESSURE",
+          "item_name": "管网压力(MPa)",
+          "rule_type": "NUMERIC",
+          "device_type": "HYDRANT",
+          "severity": "CRITICAL",
+          "min_value": 0.25,
+          "max_value": 0.7,
+          "critical_min": null,
+          "critical_max": 0.9,
+          "allowed_values": [],
+          "abnormal_value": null,
+          "required": true
+        },
+        {
+          "item_code": "H_SEAL",
+          "item_name": "铅封检查",
+          "rule_type": "TEXT",
+          "device_type": "HYDRANT",
+          "severity": "MEDIUM",
+          "min_value": null,
+          "max_value": null,
+          "critical_min": null,
+          "critical_max": null,
+          "allowed_values": [],
+          "abnormal_value": "BROKEN",
+          "required": true
+        }
+      ]
     }
   ]
 } as const;
